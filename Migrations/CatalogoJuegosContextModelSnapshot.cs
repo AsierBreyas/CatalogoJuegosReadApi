@@ -36,7 +36,19 @@ namespace CatalogoJuegosApi.Migrations
                     b.Property<string>("genre")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("graphics")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("memory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("os")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("plataform")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("processor")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("publisher")
@@ -45,7 +57,13 @@ namespace CatalogoJuegosApi.Migrations
                     b.Property<DateTime>("release_date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("screenshots")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("short_description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("storage")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("thumbnail")

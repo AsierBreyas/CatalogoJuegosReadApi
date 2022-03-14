@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CatalogoJuegosApi.Migrations
 {
-    public partial class AlterPrimaryKey : Migration
+    public partial class requisitosYscreenshot : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,7 +21,13 @@ namespace CatalogoJuegosApi.Migrations
                     publisher = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     developer = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     release_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    freetogame_profile_url = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    freetogame_profile_url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    screenshots = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    os = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    processor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    memory = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    graphics = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    storage = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -16,6 +16,12 @@ namespace CatalogoJuegosApi.Models{
         public string developer{get;set;}
         public DateTime release_date{get;set;}
         public string freetogame_profile_url{get;set;}
+        public string screenshots{get;set;}
+        public string os{get;set;}
+        public string processor{get;set;}
+        public string memory{get;set;}
+        public string graphics{get;set;}
+        public string storage{get;set;}
 
     }
 }

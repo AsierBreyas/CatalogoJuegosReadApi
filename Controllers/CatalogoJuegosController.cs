@@ -41,12 +41,11 @@ namespace CatalogoJuegosApi.Controllers
             return catalogoJuegos;
         }
 
-        //GET: api/Catalogojuegos/title
-        [HttpGet("title/{title}")]
-        public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetCatalogoJuegos(string title)
+        //GET: api/Catalogojuegos/filter/5
+        [HttpGet("filter")]
+    public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetCatalogoJuegosFiltered(string title, string genre, string plataform, string year)
         {
             var catalogoJuegos = await _context.CatalogoJuegos.ToListAsync();
-            // catalogoJuegos.Find(CatalogoJuegos.title);
             List<CatalogoJuegos> catalogoJuegosF = catalogoJuegos.Where(juego => juego.title.Contains(title)).ToList();
 
             if (catalogoJuegos == null)
