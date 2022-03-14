@@ -41,6 +41,22 @@ namespace CatalogoJuegosApi.Controllers
             return catalogoJuegos;
         }
 
+        //GET: api/Catalogojuegos/title
+        [HttpGet("title/{title}")]
+        public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetCatalogoJuegos(string title)
+        {
+            var catalogoJuegos = await _context.CatalogoJuegos.ToListAsync();
+            // catalogoJuegos.Find(CatalogoJuegos.title);
+            List<CatalogoJuegos> catalogoJuegosF = catalogoJuegos.Where(juego => juego.title.Contains(title)).ToList();
+
+            if (catalogoJuegos == null)
+            {
+                return NotFound();
+            }
+
+            return catalogoJuegosF;
+        }
+
         // PUT: api/CatalogoJuegos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
