@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CatalogoJuegosApi.Models{
     public class CatalogoJuegos{
-        
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id{get;set;}
         public string title{get;set;}
         public string thumbnail{get;set;}

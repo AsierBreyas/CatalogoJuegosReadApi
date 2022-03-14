@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CatalogoJuegosApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class AlterPrimaryKey : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,7 @@ namespace CatalogoJuegosApi.Migrations
                 name: "CatalogoJuegos",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<int>(type: "int", nullable: false),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     thumbnail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     short_description = table.Column<string>(type: "nvarchar(max)", nullable: true),

@@ -22,9 +22,7 @@ namespace CatalogoJuegosApi.Migrations
             modelBuilder.Entity("CatalogoJuegosApi.Models.CatalogoJuegos", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("developer")
                         .HasColumnType("nvarchar(max)");

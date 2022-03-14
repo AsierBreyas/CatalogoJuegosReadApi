@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatalogoJuegosApi.Migrations
 {
     [DbContext(typeof(CatalogoJuegosContext))]
-    [Migration("20220307103415_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220314072853_AlterPrimaryKey")]
+    partial class AlterPrimaryKey
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,9 +24,7 @@ namespace CatalogoJuegosApi.Migrations
             modelBuilder.Entity("CatalogoJuegosApi.Models.CatalogoJuegos", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("developer")
                         .HasColumnType("nvarchar(max)");
