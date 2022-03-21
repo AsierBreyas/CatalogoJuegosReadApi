@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VrHB3sSm8n+YO+dFSYZN9Oo1/ZzMMCqBNiuliQ5rLhWv581tU8dlL/VJpGIT/8kqTytFr37hsTQCVoWLX2M9ZQ==",
+  "dgSpecHash": "fbBzSElJ9VGUzilZ8vF4ki5YVRck753I/F1chtrPcZbvid8qgo4Hj/DOMbfb4BVxPnwNbEouObi0e+mGev97+g==",
   "success": true,
-  "projectFilePath": "D:\\ProyectoCatalogoJuegos\\CatalogoJuegosApi\\CatalogoJuegosApi.csproj",
+  "projectFilePath": "D:\\Proyecto\\juegoApi\\CatalogoJuegosApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2daw3\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\2daw3\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

@@ -43,17 +43,25 @@ namespace CatalogoJuegosApi.Controllers
 
         //GET: api/Catalogojuegos/filter/5
         [HttpGet("filter")]
-    public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetCatalogoJuegosFiltered(string title, string genre, string plataform, string year)
+    public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetCatalogoJuegosFiltered(filtro filtro)
         {
             var catalogoJuegos = await _context.CatalogoJuegos.ToListAsync();
-            List<CatalogoJuegos> catalogoJuegosF = catalogoJuegos.Where(juego => juego.title.Contains(title)).ToList();
-
+            if(filtro.Title != null){
+                filtro.Title = filtro.Title.ToLower();
+                catalogoJuegos = catalogoJuegos.Where(juego => juego.title.ToLower().Contains(filtro.Title)).ToList();
+            }
+            if(filtro.genre != null){
+                catalogoJuegos = catalogoJuegos.Where(juego => juego.genre == filtro.genre).ToList();
+            }
+            if(filtro.year != null){
+                catalogoJuegos = catalogoJuegos.Where(juego => juego.release_date.Year.ToString() == filtro.year).ToList();
+            }
             if (catalogoJuegos == null)
             {
                 return NotFound();
             }
 
-            return catalogoJuegosF;
+            return catalogoJuegos;
         }
 
         // PUT: api/CatalogoJuegos/5

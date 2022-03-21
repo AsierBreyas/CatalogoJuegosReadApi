@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProyectoCatalogoJuegos\\CatalogoJuegosApi\\CatalogoJuegosApi.csproj": {}
+    "D:\\Proyecto\\juegoApi\\CatalogoJuegosApi.csproj": {}
   },
   "projects": {
-    "D:\\ProyectoCatalogoJuegos\\CatalogoJuegosApi\\CatalogoJuegosApi.csproj": {
+    "D:\\Proyecto\\juegoApi\\CatalogoJuegosApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProyectoCatalogoJuegos\\CatalogoJuegosApi\\CatalogoJuegosApi.csproj",
+        "projectUniqueName": "D:\\Proyecto\\juegoApi\\CatalogoJuegosApi.csproj",
         "projectName": "CatalogoJuegosApi",
-        "projectPath": "D:\\ProyectoCatalogoJuegos\\CatalogoJuegosApi\\CatalogoJuegosApi.csproj",
+        "projectPath": "D:\\Proyecto\\juegoApi\\CatalogoJuegosApi.csproj",
         "packagesPath": "C:\\Users\\2daw3\\.nuget\\packages\\",
-        "outputPath": "D:\\ProyectoCatalogoJuegos\\CatalogoJuegosApi\\obj\\",
+        "outputPath": "D:\\Proyecto\\juegoApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\2daw3\\AppData\\Roaming\\NuGet\\NuGet.Config",
