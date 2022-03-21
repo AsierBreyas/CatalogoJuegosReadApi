@@ -262,3 +262,8 @@ D:\Proyecto\juegoApi\obj\Debug\net5.0\CatalogoJuegosApi.dll
 D:\Proyecto\juegoApi\obj\Debug\net5.0\ref\CatalogoJuegosApi.dll
 D:\Proyecto\juegoApi\obj\Debug\net5.0\CatalogoJuegosApi.pdb
 D:\Proyecto\juegoApi\obj\Debug\net5.0\CatalogoJuegosApi.genruntimeconfig.cache
+D:\Proyecto\juegoApi\bin\Debug\net5.0\System.Web.Cors.dll
+D:\Proyecto\juegoApi\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+D:\Proyecto\juegoApi\bin\Debug\net5.0\System.Web.Http.dll
+D:\Proyecto\juegoApi\bin\Debug\net5.0\System.Web.Http.Cors.dll
+D:\Proyecto\juegoApi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

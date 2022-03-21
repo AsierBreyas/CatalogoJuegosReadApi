@@ -11,10 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using CatalogoJuegosApi.Models;
+using System.Web.Http;
+
 
 
 namespace CatalogoJuegosApi
 {
+    
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -27,7 +30,7 @@ namespace CatalogoJuegosApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors();
             services.AddControllers();
             services.AddDbContext<CatalogoJuegosContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("CatalogoJuegos")));
@@ -40,6 +43,9 @@ namespace CatalogoJuegosApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options => options
+                                    .AllowAnyOrigin());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,9 +56,7 @@ namespace CatalogoJuegosApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

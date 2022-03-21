@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CatalogoJuegosApi.Models;
+using System.Web.Http.Cors;
 
 namespace CatalogoJuegosApi.Controllers
 {
