@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CatalogoJuegosApi.Models
 {
@@ -10,6 +12,16 @@ namespace CatalogoJuegosApi.Models
         }
 
         public DbSet<CatalogoJuegos> CatalogoJuegos { get; set; }
+        public DbSet<Usuario> Usuarios {get; set;}
+        public DbSet<Biblioteca> Bibliotecas {get; set;}
+        
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<Biblioteca>().HasKey(be => new {
+                be.JuegoId,
+                be.UserId
+            });
+        }
         
     }
 }

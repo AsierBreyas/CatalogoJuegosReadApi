@@ -70,7 +70,7 @@ namespace CatalogoJuegosApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCatalogoJuegos(int id, CatalogoJuegos catalogoJuegos)
         {
-            if (id != catalogoJuegos.id)
+            if (id != catalogoJuegos.JuegoId)
             {
                 return BadRequest();
             }
@@ -104,7 +104,7 @@ namespace CatalogoJuegosApi.Controllers
             _context.CatalogoJuegos.Add(catalogoJuegos);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCatalogoJuegos", new { id = catalogoJuegos.id }, catalogoJuegos);
+            return CreatedAtAction("GetCatalogoJuegos", new { id = catalogoJuegos.JuegoId }, catalogoJuegos);
         }
 
         // DELETE: api/CatalogoJuegos/5
@@ -125,7 +125,7 @@ namespace CatalogoJuegosApi.Controllers
 
         private bool CatalogoJuegosExists(int id)
         {
-            return _context.CatalogoJuegos.Any(e => e.id == id);
+            return _context.CatalogoJuegos.Any(e => e.JuegoId == id);
         }
     }
 }

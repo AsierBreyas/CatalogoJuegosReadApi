@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CatalogoJuegosApi.Migrations
 {
     [DbContext(typeof(CatalogoJuegosContext))]
-    [Migration("20220314113314_requisitosYscreenshot")]
-    partial class requisitosYscreenshot
+    [Migration("20220328065119_UsuarioAñadido")]
+    partial class UsuarioAñadido
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,24 @@ namespace CatalogoJuegosApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("CatalogoJuegosApi.Models.Biblioteca", b =>
+                {
+                    b.Property<int>("JuegoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("JuegoId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Bibliotecas");
+                });
+
             modelBuilder.Entity("CatalogoJuegosApi.Models.CatalogoJuegos", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("JuegoId")
                         .HasColumnType("int");
 
                     b.Property<string>("developer")
@@ -74,9 +89,49 @@ namespace CatalogoJuegosApi.Migrations
                     b.Property<string>("title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("JuegoId");
 
                     b.ToTable("CatalogoJuegos");
+                });
+
+            modelBuilder.Entity("CatalogoJuegosApi.Models.Usuario", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("contraseña")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("correo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("CatalogoJuegosApi.Models.Biblioteca", b =>
+                {
+                    b.HasOne("CatalogoJuegosApi.Models.CatalogoJuegos", "CatalogoJuegos")
+                        .WithMany()
+                        .HasForeignKey("JuegoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CatalogoJuegosApi.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CatalogoJuegos");
+
+                    b.Navigation("Usuario");
                 });
 #pragma warning restore 612, 618
         }
