@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace CatalogoJuegosApi.Models{
     public class Usuario{
@@ -8,7 +9,7 @@ namespace CatalogoJuegosApi.Models{
         public string nombre{get;set;}
         [DataType(DataType.EmailAddress)]
         public string correo{get;set;}
-        [DataType(DataType.Password)]
+        [JsonIgnore,DataType(DataType.Password)]
         public string contraseña{get;set;}
 
     }

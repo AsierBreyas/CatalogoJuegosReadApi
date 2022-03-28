@@ -38,6 +38,9 @@ namespace CatalogoJuegosApi
             // {
             //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CatalogoJuegosApi", Version = "v1" });
             // });
+            // services.Configure<Usuario>(options => {
+            //     options.contraseña.RequireDigit = true;
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +59,7 @@ namespace CatalogoJuegosApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
