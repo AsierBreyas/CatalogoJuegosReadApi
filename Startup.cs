@@ -10,8 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using CatalogoJuegosApi.Models;
-using System.Web.Http;
+using CatalogoJuegosApi.Settings;
+using CatalogoJuegosApi.Middleware;
+using CatalogoJuegosApi.Auth;
 
 
 
@@ -32,6 +33,8 @@ namespace CatalogoJuegosApi
         {
             services.AddCors();
             services.AddControllers();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddScoped<IAuthService, AuthService>();
             services.AddDbContext<CatalogoJuegosContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("CatalogoJuegos")));
             // services.AddSwaggerGen(c =>
@@ -57,7 +60,7 @@ namespace CatalogoJuegosApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

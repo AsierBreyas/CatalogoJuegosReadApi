@@ -12,7 +12,7 @@ public class AuthorizeAttribute : Attribute, IAuthorizationFilter
     // validado con el JWT
     public void OnAuthorization(AuthorizationFilterContext context)
     {
-        var user = (User)context.HttpContext.Items["User"];
+        var user = (Usuario)context.HttpContext.Items["Usuario"];
         if (user == null)
         {
             // no logeado

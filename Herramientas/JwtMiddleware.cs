@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using CatalogoJuegosApi.Auth;
 using CatalogoJuegosApi.Settings;
 
-namespace CatalogoJuegosApiMiddleware
+namespace CatalogoJuegosApi.Middleware
 {
     public class JwtMiddleware
     {
@@ -23,7 +23,7 @@ namespace CatalogoJuegosApiMiddleware
             _appSettings = appSettings.Value;
         }
 
-        public async Task Invoke(HttpContext context, IUsersService userService)
+        public async Task Invoke(HttpContext context, IAuthService userService)
         {
             // ====> Request ===>
             // Modificamos el contexto de la Request
@@ -40,7 +40,7 @@ namespace CatalogoJuegosApiMiddleware
             
         }
 
-        private void attachUserToContext(HttpContext context, IUsersService userService, string token)
+        private void attachUserToContext(HttpContext context, IAuthService userService, string token)
         {
             try
             {
@@ -62,9 +62,6 @@ namespace CatalogoJuegosApiMiddleware
                 // Colocamos user en el Contexto de la Request 
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
                 context.Items["User"] = userService.GetById(userId);
-                var role = int.Parse(jwtToken.Claims.First(x => x.Type == ClaimTypes.Role).Value);
-                context.Items["Role"] = role;
-
                 // var userName = int.Parse(jwtToken.Claims.First(x => x.Type == ClaimTypes.Name).Value);
                 // context.Items["User"] = userName;
             }

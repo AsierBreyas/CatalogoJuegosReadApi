@@ -9,7 +9,7 @@ namespace CatalogoJuegosApi.Models{
         public string nombre{get;set;}
         [DataType(DataType.EmailAddress)]
         public string correo{get;set;}
-        [JsonIgnore,DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         public string contraseña{get;set;}
 
     }
