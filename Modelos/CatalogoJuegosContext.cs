@@ -17,10 +17,10 @@ namespace CatalogoJuegosApi.Models
         
         
         protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<Biblioteca>().HasKey(be => new {
+            modelBuilder.Entity<Biblioteca>().HasIndex(be => new {
                 be.JuegoId,
                 be.UserId
-            });
+            }).IsUnique();
         }
         
     }

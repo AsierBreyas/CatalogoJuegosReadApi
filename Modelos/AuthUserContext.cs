@@ -18,11 +18,10 @@ public class CatalogoJuegosContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Biblioteca>().HasKey(b => new
-        {
-            b.JuegoId,
-            b.UserId
-        });
+        modelBuilder.Entity<Biblioteca>().HasIndex(be => new {
+                be.JuegoId,
+                be.UserId
+            }).IsUnique();
         modelBuilder.Entity<Usuario>(entity =>
         {
             entity.HasIndex(e => e.correo).IsUnique();

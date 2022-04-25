@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CatalogoJuegosApi.Migrations
 {
-    public partial class UsuarioAñadido : Migration
+    public partial class MapeacionDeJuegos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace CatalogoJuegosApi.Migrations
                     title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     thumbnail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     short_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     game_url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     plataform = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -41,7 +42,7 @@ namespace CatalogoJuegosApi.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    correo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    correo = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     contraseña = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -50,23 +51,24 @@ namespace CatalogoJuegosApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Bibliotecas",
+                name: "Biblioteca",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    JuegoId = table.Column<int>(type: "int", nullable: false)
+                    JuegoId = table.Column<int>(type: "int", nullable: false),
+                    BibliotecaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bibliotecas", x => new { x.JuegoId, x.UserId });
+                    table.PrimaryKey("PK_Biblioteca", x => new { x.JuegoId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_Bibliotecas_CatalogoJuegos_JuegoId",
+                        name: "FK_Biblioteca_CatalogoJuegos_JuegoId",
                         column: x => x.JuegoId,
                         principalTable: "CatalogoJuegos",
                         principalColumn: "JuegoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Bibliotecas_Usuarios_UserId",
+                        name: "FK_Biblioteca_Usuarios_UserId",
                         column: x => x.UserId,
                         principalTable: "Usuarios",
                         principalColumn: "UserId",
@@ -74,15 +76,22 @@ namespace CatalogoJuegosApi.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bibliotecas_UserId",
-                table: "Bibliotecas",
+                name: "IX_Biblioteca_UserId",
+                table: "Biblioteca",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_correo",
+                table: "Usuarios",
+                column: "correo",
+                unique: true,
+                filter: "[correo] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Bibliotecas");
+                name: "Biblioteca");
 
             migrationBuilder.DropTable(
                 name: "CatalogoJuegos");

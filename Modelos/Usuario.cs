@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using System.Collections.Generic;
 
 namespace CatalogoJuegosApi.Models{
     public class Usuario{
@@ -11,6 +12,8 @@ namespace CatalogoJuegosApi.Models{
         public string correo{get;set;}
         [DataType(DataType.Password)]
         public string contraseña{get;set;}
+
+        public List<Biblioteca> MisJuegos {get;} = new List<Biblioteca>();
 
     }
 }

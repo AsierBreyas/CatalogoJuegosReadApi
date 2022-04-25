@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace CatalogoJuegosApi.Models{
     public class CatalogoJuegos{
@@ -9,6 +10,7 @@ namespace CatalogoJuegosApi.Models{
         public string title{get;set;}
         public string thumbnail{get;set;}
         public string short_description{get;set;}
+        public string description {get; set;}
         public string game_url{get;set;}
         public string genre{get;set;}
         public string plataform{get;set;}
@@ -22,6 +24,7 @@ namespace CatalogoJuegosApi.Models{
         public string memory{get;set;}
         public string graphics{get;set;}
         public string storage{get;set;}
+        public List<Biblioteca> MisJuegos {get;} = new List<Biblioteca>();
 
     }
 }

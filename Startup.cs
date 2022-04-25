@@ -37,13 +37,9 @@ namespace CatalogoJuegosApi
             services.AddScoped<IAuthService, AuthService>();
             services.AddDbContext<CatalogoJuegosContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("CatalogoJuegos")));
-            // services.AddSwaggerGen(c =>
-            // {
-            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CatalogoJuegosApi", Version = "v1" });
-            // });
-            // services.Configure<Usuario>(options => {
-            //     options.contraseña.RequireDigit = true;
-            // });
+
+            services.AddDbContext<CatalgoJuegosContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("CatalgoJuegosContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,8 +51,6 @@ namespace CatalogoJuegosApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                // app.UseSwagger();
-                // app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CatalogoJuegosApi v1"));
             }
 
             app.UseHttpsRedirection();
