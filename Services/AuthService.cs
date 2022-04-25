@@ -84,24 +84,5 @@ namespace CatalogoJuegosApi.Auth
             return (token: tokenHandler.WriteToken(token), validTo: token.ValidTo);
 
         }
-        // private string generateJwtToken(Usuario user, DateTime expiracion)
-        // {
-        //     var tokenHandler = new JwtSecurityTokenHandler();
-        //     var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-        //     var tokenDescriptor = new SecurityTokenDescriptor
-        //     {
-        //         Subject = new ClaimsIdentity(new[] 
-        //         { 
-        //             new Claim("id", user.UserId.ToString()),
-        //             new Claim(ClaimTypes.Email, user.correo)
-        //         }),
-        //         Expires = expiracion,
-        //         SigningCredentials = new SigningCredentials(
-        //             new SymmetricSecurityKey(key), 
-        //             SecurityAlgorithms.HmacSha256Signature)
-        //     };
-        //     var token = tokenHandler.CreateToken(tokenDescriptor);
-        //     return  tokenHandler.WriteToken(token);
-        // }
     }
 }
