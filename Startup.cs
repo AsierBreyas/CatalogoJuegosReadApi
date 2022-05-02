@@ -37,9 +37,6 @@ namespace CatalogoJuegosApi
             services.AddScoped<IAuthService, AuthService>();
             services.AddDbContext<CatalogoJuegosContext>(opt => 
                 opt.UseSqlServer(Configuration.GetConnectionString("CatalogoJuegos")));
-
-            services.AddDbContext<CatalgoJuegosContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("CatalgoJuegosContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

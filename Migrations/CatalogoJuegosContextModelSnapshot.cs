@@ -20,18 +20,23 @@ namespace CatalogoJuegosApi.Migrations
 
             modelBuilder.Entity("CatalogoJuegosApi.Models.Biblioteca", b =>
                 {
+                    b.Property<int>("BibliotecaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
                     b.Property<int>("JuegoId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BibliotecaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("JuegoId", "UserId");
+                    b.HasKey("BibliotecaId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("JuegoId", "UserId")
+                        .IsUnique();
 
                     b.ToTable("Biblioteca");
                 });

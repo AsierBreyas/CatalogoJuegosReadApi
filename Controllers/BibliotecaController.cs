@@ -13,9 +13,9 @@ namespace CatalogoJuegosApi.Controllers
     [ApiController]
     public class BibliotecaController : ControllerBase
     {
-        private readonly CatalgoJuegosContext _context;
+        private readonly CatalogoJuegosContext _context;
 
-        public BibliotecaController(CatalgoJuegosContext context)
+        public BibliotecaController(CatalogoJuegosContext context)
         {
             _context = context;
         }

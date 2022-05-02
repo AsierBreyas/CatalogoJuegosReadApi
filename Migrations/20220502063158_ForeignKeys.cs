@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CatalogoJuegosApi.Migrations
 {
-    public partial class MapeacionDeJuegos : Migration
+    public partial class ForeignKeys : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,13 +54,14 @@ namespace CatalogoJuegosApi.Migrations
                 name: "Biblioteca",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    JuegoId = table.Column<int>(type: "int", nullable: false),
                     BibliotecaId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JuegoId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Biblioteca", x => new { x.JuegoId, x.UserId });
+                    table.PrimaryKey("PK_Biblioteca", x => x.BibliotecaId);
                     table.ForeignKey(
                         name: "FK_Biblioteca_CatalogoJuegos_JuegoId",
                         column: x => x.JuegoId,
@@ -74,6 +75,12 @@ namespace CatalogoJuegosApi.Migrations
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Biblioteca_JuegoId_UserId",
+                table: "Biblioteca",
+                columns: new[] { "JuegoId", "UserId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Biblioteca_UserId",
