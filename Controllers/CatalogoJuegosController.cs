@@ -43,7 +43,7 @@ namespace CatalogoJuegosApi.Controllers
         }
 
         //GET: api/Catalogojuegos/filter/5
-        [HttpGet("filter")]
+        [HttpPost("filter")]
     public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetCatalogoJuegosFiltered(filtro filtro)
         {
             var catalogoJuegos = await _context.CatalogoJuegos.ToListAsync();
