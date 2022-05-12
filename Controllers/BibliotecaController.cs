@@ -84,10 +84,10 @@ namespace CatalogoJuegosApi.Controllers
         }
 
         // DELETE: api/Biblioteca/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBiblioteca(int id)
+        [HttpDelete("{userId}/{juegoId}")]
+        public async Task<IActionResult> DeleteBiblioteca(int userId, int juegoId)
         {
-            var biblioteca = await _context.Biblioteca.FindAsync(id);
+            var biblioteca = _context.Biblioteca.Where(b => b.UserId == userId && b.JuegoId == juegoId).FirstOrDefault();
             if (biblioteca == null)
             {
                 return NotFound();
