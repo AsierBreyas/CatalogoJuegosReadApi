@@ -28,10 +28,10 @@ namespace CatalogoJuegosApi.Controllers
         }
 
         // GET: api/Biblioteca/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Biblioteca>> GetBiblioteca(int id)
+        [HttpGet("{usuarioId}")]
+        public async Task<ActionResult<IEnumerable<Biblioteca>>> GetBiblioteca(int usuarioId)
         {
-            var biblioteca = await _context.Biblioteca.FindAsync(id);
+            var biblioteca = await _context.Biblioteca.Where(b => b.UserId == usuarioId).ToListAsync();
 
             if (biblioteca == null)
             {
