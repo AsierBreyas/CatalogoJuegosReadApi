@@ -29,9 +29,10 @@ namespace CatalogoJuegosApi.Controllers
 
         // GET: api/Biblioteca/5
         [HttpGet("{usuarioId}")]
-        public async Task<ActionResult<IEnumerable<Biblioteca>>> GetBiblioteca(int usuarioId)
+        public async Task<ActionResult<IEnumerable<CatalogoJuegos>>> GetBiblioteca(int usuarioId)
         {
-            var biblioteca = await _context.Biblioteca.Where(b => b.UserId == usuarioId).ToListAsync();
+            var biblioteca = await _context.Biblioteca.Where(b => b.UserId == usuarioId).Select(b=> b.CatalogoJuegos).ToListAsync();
+            //var catalogoBiblioteca= await _context.CatalogoJuegos.Where(ct=> ct.JuegoId);
 
             if (biblioteca == null)
             {
