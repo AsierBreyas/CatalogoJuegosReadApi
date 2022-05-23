@@ -53,7 +53,6 @@ namespace CatalogoJuegosApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
             app.UseMiddleware<JwtMiddleware>();
             app.UseRouting();
             app.UseAuthentication();
